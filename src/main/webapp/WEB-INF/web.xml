@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+	<display-name>Archetype Created Web Application</display-name>
+
+	<resource-ref>
+		<description>DB Local</description>
+		<res-ref-name>jdbc/TestMYSQL_AXIS2</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<resource-ref>
+		<description>DB Local</description>
+		<res-ref-name>jdbc/TestMYSQL_LOCAL</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<!-- DB AWS for test not mapping to context server  -->
+	
+	<resource-ref>
+		<description>DB AWS</description>
+		<res-ref-name>jdbc/TestMYSQL_AWS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<listener>
+		<listener-class>db.listener.DbFinder</listener-class>
+	</listener>
+
+
+	<servlet>
+		<description>
+		</description>
+		<display-name>Moring</display-name>
+		<servlet-name>Moring</servlet-name>
+		<servlet-class>backend.Moring</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DbSelect</display-name>
+		<servlet-name>DbSelect</servlet-name>
+		<servlet-class>backend.DbSelect</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DbConnect</display-name>
+		<servlet-name>DbConnect</servlet-name>
+		<servlet-class>backend.DbConnect</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>TableServlet</display-name>
+		<servlet-name>TableServlet</servlet-name>
+		<servlet-class>db.table.controller.TableServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>MyServlet</display-name>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>db.table.controller.MyServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Moring</servlet-name>
+		<url-pattern>/Moring</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DbSelect</servlet-name>
+		<url-pattern>/DbSelect</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DbConnect</servlet-name>
+		<url-pattern>/DbConnect</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TableServlet</servlet-name>
+		<url-pattern>/TableServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/MyServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

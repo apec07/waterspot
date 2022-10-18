@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+    <Properties>
+        <Property name="basePath">Log4j2/logs</Property>
+        <Property name="FILE_NAME">WaterSpot</Property>
+    </Properties>
+    <Appenders>
+        <!-- File Appender -->
+<!--         <File name="FILE" fileName="${basePath}/logfile.log" append="true"> -->
+<!--             <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" /> -->
+<!--         </File> -->
+        
+        <RollingFile name="RollingFile" fileName="${basePath}/${FILE_NAME}.log"
+            filePattern="${basePath}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+  				<SizeBasedTriggeringPolicy size="2 kB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+<!--         <RollingRandomAccessFile name="MIS_PROJECT" -->
+<!--             fileName="${basePath}/${FILE_NAME}.log" -->
+<!--             filePattern="${basePath}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.gz"> -->
+            
+<!--             <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" /> -->
+<!--             <Policies> -->
+<!--                 <TimeBasedTriggeringPolicy /> -->
+<!--                 <SizeBasedTriggeringPolicy size="10 MB" /> -->
+<!--             </Policies> -->
+<!--             <DefaultRolloverStrategy max="20" /> -->
+<!--         </RollingRandomAccessFile> -->
+        <!-- Console Appender -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.jcg" level="info" />
+        <Root level="info">
+            <AppenderRef ref="STDOUT" />
+<!--             <AppenderRef ref="FILE" /> -->
+            <AppenderRef ref="RollingFile" />
+        </Root>
+    </Loggers>
+</Configuration>
