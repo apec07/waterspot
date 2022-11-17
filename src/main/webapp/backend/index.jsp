@@ -53,14 +53,13 @@
 
 
 	%>
-		<c:forEach items="${table_Svc.allTables}" var="table">
-		
-		<tr>
-		<td>${table}</td>
-		
-		</tr>
-		
-		</c:forEach>
+		<c:if test = "<%=tables.size()>0 %>">
+			<c:forEach items="<%=tables %>" var="table">
+			<tr>
+			<td>${table}</td>
+			</tr>
+			</c:forEach>
+		 </c:if>
 	</tbody>
 	</table>
 
