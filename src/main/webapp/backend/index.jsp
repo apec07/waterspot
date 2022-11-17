@@ -46,7 +46,8 @@
 	<tbody>
 	<% 
 	// foreach input default ()
-	// foreach input parameter : dburl - TBD
+	// foreach input parameter : dburl 
+	// JS lock select option after submit
 	String dbUrl = (String)session.getAttribute("dbUrl");
 	List<String> tables = new db.table.model.TableService(dbUrl).getAllTables();
 	

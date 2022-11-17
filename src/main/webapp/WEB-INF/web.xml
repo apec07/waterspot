@@ -67,6 +67,13 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 		<servlet-name>MyServlet</servlet-name>
 		<servlet-class>db.table.controller.MyServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>Hello</display-name>
+		<servlet-name>Hello</servlet-name>
+		<servlet-class>test.Hello</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Moring</servlet-name>
@@ -88,5 +95,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 		<servlet-name>MyServlet</servlet-name>
 		<url-pattern>/MyServlet</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/Hello</url-pattern>
+	</servlet-mapping>
+
 	
 </web-app>
