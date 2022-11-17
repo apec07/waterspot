@@ -36,8 +36,7 @@ public class TableDAO implements TableImp {
 			ds = (DataSource) ctx.lookup("java:comp/env/"+dbUrl);
 			LOGGER.info("new DB "+dbUrl);
 		} catch (NamingException e) {
-			LOGGER.warn("no DataBase defined!\n"+e.getStackTrace()); // handle on it
-			new TableDAO();
+			LOGGER.error("no DataBase defined!\n"+e.getStackTrace());
 		}
 	}
 	
@@ -54,11 +53,11 @@ public class TableDAO implements TableImp {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				String tableName = rs.getString(1);
-				//LOGGER.info(tableName);
+				LOGGER.info(tableName);
 				tables.add(tableName);
 			}
 		} catch (SQLException e) {
-			LOGGER.error("No Connection"); // no action, front-end handle
+			e.printStackTrace();
 		}
 		LOGGER.info("Lable size - "+ tables.size());
 		return tables;

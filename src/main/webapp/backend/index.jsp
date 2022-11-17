@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.*" %>
 
-<%-- <jsp:useBean id="table_Svc" scope="page" class="db.table.model.TableService" /> --%>
+<jsp:useBean id="table_Svc" scope="page" class="db.table.model.TableService" />
 
 <!DOCTYPE html>
 <html>
@@ -50,18 +50,20 @@
 	// JS lock select option after submit
 	String dbUrl = (String)session.getAttribute("dbUrl");
 	List<String> tables = new db.table.model.TableService(dbUrl).getAllTables();
-	
+
+
 	%>
-		 <c:if test = "<%=tables.size()>0 %>">
-			<c:forEach items="<%=tables %>" var="table">
-			<tr>
-			<td>${table}</td>
-			</tr>
-			</c:forEach>
-		 </c:if>
+		<c:forEach items="${table_Svc.allTables}" var="table">
+		
+		<tr>
+		<td>${table}</td>
+		
+		</tr>
+		
+		</c:forEach>
 	</tbody>
 	</table>
-<HR>
+
 <H2>Row Data</H2>
 <%
 // List data if the table is selected
